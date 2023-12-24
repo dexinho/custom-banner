@@ -1,68 +1,44 @@
-const customHeader = document.querySelector("#custom-header");
-const insertBtn = document.querySelector("#insert-btn");
-const imgInput = document.querySelector('#img-input')
+import {
+  imgInput,
+  insertBtn,
+  customHeader,
+  container,
+} from "./src/utility/querySelectors.js";
+import { createGrid } from "./src/utility/createGrid.js";
+import { makeBlockResizableAndMovable } from "./src/utility/makeBlocksDynamic.js";
+import { handleUtBtns } from "./src/utility/utBtns.js";
 
-for (let i = 0; i < 10; i++) {
-  const headerElement = document.createElement("div");
-  const headerWidth = parseInt(getComputedStyle(customHeader).width, 10);
+// insertBtn.addEventListener("click", () => {
+//   const selectedElements = document.querySelectorAll(".selected");
+//   const elements = [...selectedElements];
+//   const containerPadding = parseInt(getComputedStyle(container).padding, 10);
+//   const customHeaderBorderWidth = parseInt(
+//     getComputedStyle(customHeader).borderLeft,
+//     10
+//   );
 
-  headerElement.className = "header-elements";
+//   const imageHolder = document.createElement("div");
+//   const img = document.createElement("img");
 
-  headerElement.style.width = headerWidth / 10 + "px";
-  headerElement.style.border = "1px solid red";
+//   let startX = elements.at(0).getBoundingClientRect().left;
+//   let endX = elements.at(-1).getBoundingClientRect().right;
 
-  customHeader.append(headerElement);
-}
+//   const holderWidth = Number(endX) - Number(startX);
 
-const headerElements = document.querySelectorAll(".header-elements");
+//   imageHolder.style.position = "absolute";
+//   img.src = imgInput.value;
+//   img.className = "banner-pic c-grab";
 
-let isMouseDown = false;
-headerElements.forEach((element) => {
-  const handleMouseOver = (event) => {
-    event.preventDefault();
-    if (isMouseDown) {
-      toggleElements(event.target);
-    }
-  };
+//   imageHolder.style.left = `${
+//     startX - containerPadding - customHeaderBorderWidth
+//   }px`;
+//   imageHolder.style.width = `${holderWidth}px`;
 
-  const handleMouseDown = (event) => {
-    event.preventDefault();
-    isMouseDown = true;
-    event.target.classList.toggle("selected");
+//   customHeader.append(imageHolder);
+//   imageHolder.append(img);
 
-    document.addEventListener("mouseup", () => {
-      isMouseDown = false;
-      console.log(isMouseDown);
-    });
-  };
+//   makeBlockResizableAndMovable(imageHolder);
+// });
 
-  const toggleElements = (target) => {
-    target.classList.toggle("selected");
-  };
-
-  element.addEventListener("mouseover", handleMouseOver);
-  element.addEventListener("mousedown", handleMouseDown);
-});
-
-insertBtn.addEventListener("click", () => {
-  const selectedElements = document.querySelectorAll(".selected");
-  const elements = [...selectedElements];
-
-  let startY = elements.at(0).getBoundingClientRect().top
-  
-  let startX = elements.at(0).getBoundingClientRect().left;
-  let endX = elements.at(-1).getBoundingClientRect().right;
-
-  const img = document.createElement('img')
-
-  img.style.position = 'absolute'
-  img.src = imgInput.value
-  const imgWidth = Number(endX) - Number(startX)
-
-  console.log(imgWidth)
-
-  customHeader.append(img)
-  img.style.top = startY
-  img.style.left = startX
-  img.style.width = `${imgWidth}px`
-});
+createGrid(1000);
+handleUtBtns();
