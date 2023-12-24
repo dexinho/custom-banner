@@ -1,23 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="index.css">
-  <script src="index.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="index.js" type="module"></script>
   <title>Custom Banner</title>
 </head>
+
 <body>
   <div id="container">
     <div id="custom-settings">
-      <button id="open-close-custom-settings-btn"></button>
     </div>
     <div id="custom-header">
     </div>
-    <div id="insert-elements-div">
+    <!-- <div id="insert-elements-div">
       <input type="text" id="img-input">
       <button id="insert-btn">INSERT</button>
+    </div> -->
+    <div id="utility-tools">
+      <div id="ut-settings">
+        <button>RESET RANGE</button>
+        <button id="ut-toggle-btn" class="ut-btn"><i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+      <div id="ut-title">UTILITY TOOLS</div>
+      <div id="ut-btns-div">
+        <button class='ut-btn' id="add-image-btn">IMAGE</button>
+        <button class='ut-btn' id="add-html-btn">HTML</button>
+        <button class='ut-btn' id="add-clock-btn">CLOCK</button>
+      </div>
+
     </div>
+    <!-- <button id="open-close-utility-tools-btn"></button> -->
   </div>
 </body>
+
 </html>
