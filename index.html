@@ -18,24 +18,33 @@
     </div>
     <div id="custom-header">
     </div>
-    <!-- <div id="insert-elements-div">
-      <input type="text" id="img-input">
-      <button id="insert-btn">INSERT</button>
-    </div> -->
+
     <div id="utility-tools">
       <div id="ut-settings">
-        <button>RESET RANGE</button>
-        <button id="ut-toggle-btn" class="ut-btn"><i class="fa-solid fa-arrow-right"></i></button>
+        <div id="ut-reset-change-div">
+          <button id="ut-reset-range-btn" class="ut-btn">RESET RANGE</button>
+          <button id="ut-density-btn" class="ut-btn">CHANGE DENSITY</button>
+          <input type="number" id="ut-density-input" value="100" min="1" max="400">
+        </div>
+        <div id="ut-toggle-div">
+          <button id="ut-toggle-btn" class="ut-btn"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+
       </div>
       <div id="ut-title">UTILITY TOOLS</div>
-      <div id="ut-btns-div">
-        <button class='ut-btn' id="add-image-btn">IMAGE</button>
-        <button class='ut-btn' id="add-html-btn">HTML</button>
-        <button class='ut-btn' id="add-clock-btn">CLOCK</button>
+      <div id="ut-pop-up-container">
+        <select id='ut-select'>
+          <option selected>SELECT</option>
+          <option value="image">IMAGE</option>
+          <option value="html">HTML</option>
+        </select>
+        <div id="ut-selected-option-div" class="ut-pop-div display-flex display-none">
+          <div id="ut-option-title"></div>
+          <div id="ut-option-tool"></div>
+          <button id="ut-insert-btn" class="insert-btn">INSERT</button>
+        </div>
       </div>
-
     </div>
-    <!-- <button id="open-close-utility-tools-btn"></button> -->
   </div>
 </body>
 

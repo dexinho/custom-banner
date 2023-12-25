@@ -1,4 +1,4 @@
-export const makeBlockResizableAndMovable = (block) => {
+export const makeBlockDynamic = (block) => {
   let isResizing = false;
   let isDragging = false;
 
@@ -70,7 +70,7 @@ export const makeBlockResizableAndMovable = (block) => {
 
   const createResizeHandle = (className) => {
     const handle = document.createElement("div");
-    handle.className = `resize-handle ${className}`;
+    handle.className = `resize-handle resize-handle-toggle ${className}`;
     handle.addEventListener("mousedown", (e) => startResizing(e, handle));
     return handle;
   };

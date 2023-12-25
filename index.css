@@ -18,6 +18,7 @@ body {
 #container {
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
 #custom-header {
@@ -30,8 +31,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid blue;
-  overflow: hidden;
+  border: 0;
 }
 
 #custom-header>* {
@@ -42,6 +42,10 @@ body {
 
 .selected {
   background-color: blue;
+}
+
+.grid-border {
+  border: 1px solid rgb(141, 52, 52);
 }
 
 .resize-handle {
@@ -82,8 +86,7 @@ body {
   flex-wrap: wrap;
   gap: 2rem;
   width: 300px;
-  border: 2px solid royalblue;
-  margin-top: 1rem;
+  margin-top: 2rem;
   padding: 1rem;
   transform: translate(-230px, 0);
   transition: transform 0.4s ease-in;
@@ -92,7 +95,7 @@ body {
 }
 
 .ut-toggle {
-  transform: translate(0, 0) !important;
+  transform: translate(10px, 0) !important;
 }
 
 #utility-tools>* {
@@ -105,6 +108,7 @@ body {
 }
 
 .ut-btn {
+  position: relative;
   width: 150px;
   height: 50px;
   cursor: pointer;
@@ -112,27 +116,39 @@ body {
 
 #ut-settings {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  flex-wrap: wrap;
 }
 
-#ut-settings>* {
+#ut-reset-change-div {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   height: 30px;
-  padding: 1rem;
+  font-size: 1rem;
+  height: 200px;
+  width: 200px;
+}
+
+#ut-density-btn {
+  margin-top: 1rem;
+}
+
+#ut-density-input {
+  width: 80px;
+  padding: 0.5rem;
   font-size: 1.2rem;
 }
 
-#ut-settings>*:nth-child(2) {
+
+#ut-toggle-btn {
   width: 40px;
   border-radius: 1rem;
   border: 1px solid black;
 }
 
-#ut-settings>*:nth-child(2):hover {
+#ut-toggle-btn:hover {
   background-color: royalblue;
 }
 
@@ -141,5 +157,102 @@ button {
 }
 
 #ut-title {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
+}
+
+#ut-btns-div>* {
+  position: relative;
+}
+
+.ut-pop-div {
+  position: absolute;
+  /* display: flex !important; */
+  /* display: none; */
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 300px;
+  top: 60px;
+  background-color: rgb(189, 147, 147);
+  padding: 0.5rem;
+}
+
+.display-flex {
+  display: flex !important;
+}
+
+.display-none {
+  display: none !important;
+}
+
+.bg-color-bw {
+  background-color: burlywood;
+}
+
+.ut-pop-div>* {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+#ut-option-tool>* {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+textarea {
+  padding: 0.5rem;
+}
+
+.insert-btn {
+  width: 100%;
+  height: 30px;
+}
+
+#ut-pop-up-container {
+  position: relative;
+}
+
+#ut-select {
+  height: 30px;
+  font-size: 1.2rem;
+  padding: 0.2rem;
+}
+
+.border-blue {
+  border: 2px solid royalblue !important;
+}
+
+.grid-element {
+  z-index: 1 !important;
+}
+
+.banner-element {
+  z-index: 2 !important;
+}
+
+.remove-banner-element-toggle {
+  display: none;
+}
+
+.remove-banner-element {
+  display: block;
+  position: absolute;
+  bottom: -25px;
+  width: 100%;
+  height: 20px;
+  background-color: rgb(189, 147, 147);
+  z-index: 999;
+  transition: scale 0.2s ease-in;
+  cursor: pointer;
+}
+
+
+.remove-banner-element:hover {
+  scale: 1.05;
+  background-color: aquamarine;
 }

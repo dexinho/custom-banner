@@ -1,24 +1,26 @@
 import { customHeader } from "./querySelectors.js";
 
 export const createGrid = (density) => {
+  removeGrid();
+
   for (let i = 0; i < density; i++) {
-    const headerElement = document.createElement("div");
+    const gridElement = document.createElement("div");
     const headerWidth = parseInt(getComputedStyle(customHeader).width, 10);
 
-    headerElement.className = "header-elements";
+    gridElement.className = "grid-element grid-border";
 
-    headerElement.style.width = headerWidth / density + "px";
-    headerElement.style.left = (i * headerWidth) / density + "px";
-    headerElement.style.position = "absolute";
+    gridElement.style.width = headerWidth / density + "px";
+    gridElement.style.left = (i * headerWidth) / density + "px";
+    gridElement.style.position = "absolute";
 
-    customHeader.append(headerElement);
+    customHeader.append(gridElement);
   }
 
   makeGridElementsSelectable();
 };
 
 const makeGridElementsSelectable = () => {
-  const headerElements = document.querySelectorAll(".header-elements");
+  const headerElements = document.querySelectorAll(".grid-element");
 
   let isMouseDown = false;
   headerElements.forEach((element) => {
@@ -47,4 +49,16 @@ const makeGridElementsSelectable = () => {
     element.addEventListener("mouseover", handleMouseOver);
     element.addEventListener("mousedown", handleMouseDown);
   });
+};
+
+export const removeGrid = () => {
+  const gridElements = document.querySelectorAll(".banner-element");
+  const tempElements = [];
+
+  customHeader.innerHTML = "";
+
+  console.log(gridElements)
+
+  gridElements.forEach((el) => tempElements.push(el));
+  tempElements.forEach((el) => customHeader.append(el));
 };
