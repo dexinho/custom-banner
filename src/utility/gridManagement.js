@@ -1,6 +1,11 @@
 import { customHeader } from "./querySelectors.js";
 
 export const createGrid = (density) => {
+  if (density > 400) {
+    alert("Insert density from 1 to 400!");
+    return;
+  }
+
   removeGrid();
 
   for (let i = 0; i < density; i++) {
@@ -57,7 +62,7 @@ export const removeGrid = () => {
 
   customHeader.innerHTML = "";
 
-  console.log(gridElements)
+  console.log(gridElements);
 
   gridElements.forEach((el) => tempElements.push(el));
   tempElements.forEach((el) => customHeader.append(el));
