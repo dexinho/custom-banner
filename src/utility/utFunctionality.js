@@ -134,7 +134,9 @@ const createHolder = ({ startX, endX }) => {
 
 const handleResizeHandles = () => {
   const resizeHandles = document.querySelectorAll(".resize-handle-toggle");
-  resizeHandles.forEach((handle) => handle.classList.toggle("resize-handle"));
+  resizeHandles.forEach((handle) => {
+    handle.classList.remove("resize-handle");
+  });
 };
 
 const handleElementMouseOver = (element) => {
@@ -171,7 +173,7 @@ const handleGridDisplay = () => {
   if (gridElements.length === 0) {
     createGrid(utDensityInput.value);
   } else removeGrid();
-
+  
   handleResizeHandles();
 };
 
