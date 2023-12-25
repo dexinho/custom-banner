@@ -12,6 +12,7 @@ import {
 } from "./querySelectors.js";
 import { createGrid, removeGrid } from "./gridManagement.js";
 import { makeBlockDynamic } from "./makeBlockDynamic.js";
+import { BANNER_STATES } from "./globalVar.js";
 
 export const handleUtFunctionality = () => {
   handleUtBtns();
@@ -30,7 +31,7 @@ const handleUtBtns = () => {
         btn.firstElementChild.classList.toggle("fa-arrow-left");
         customHeader.classList.toggle("border-blue");
         utSelectedOptionDiv.classList.add("display-none");
-
+        BANNER_STATES.isUtOn = !BANNER_STATES.isUtOn;
         handleGridDisplay();
       } else if (btn.id === "ut-reset-range-btn") removeSelection();
     });
@@ -123,20 +124,46 @@ const createHolder = ({ startX, endX }) => {
 
   customHeader.append(blockHolder);
   blockHolder.append(removeBannerElementBtn);
+
   removeSelection();
   handlBannerElementRemove(removeBannerElementBtn);
+  handleElementMouseOver(blockHolder);
 
   return blockHolder;
 };
 
+const handleResizeHandles = () => {
+  const resizeHandles = document.querySelectorAll(".resize-handle-toggle");
+  resizeHandles.forEach((handle) => handle.classList.toggle("resize-handle"));
+};
+
+const handleElementMouseOver = (element) => {
+  element.addEventListener("mouseover", () => {
+    const leftHandle = element.firstElementChild;
+    const rightHandle = leftHandle.nextElementSibling;
+
+    if (BANNER_STATES.isUtOn) {
+      leftHandle.classList.toggle("resize-handle");
+      rightHandle.classList.toggle("resize-handle");
+    }
+  });
+  element.addEventListener("mouseout", () => {
+    const leftHandle = element.firstElementChild;
+    const rightHandle = leftHandle.nextElementSibling;
+
+    if (BANNER_STATES.isUtOn) {
+      leftHandle.classList.toggle("resize-handle");
+      rightHandle.classList.toggle("resize-handle");
+    }
+  });
+};
+
 const handleGridDisplay = () => {
   const gridElements = document.querySelectorAll(".grid-element");
-  const resizeHandles = document.querySelectorAll(".resize-handle-toggle");
   const removeBannerBtns = document.querySelectorAll(
     ".remove-banner-element-toggle"
   );
 
-  resizeHandles.forEach((handle) => handle.classList.toggle("resize-handle"));
   removeBannerBtns.forEach((btn) =>
     btn.classList.toggle("remove-banner-element")
   );
@@ -144,6 +171,8 @@ const handleGridDisplay = () => {
   if (gridElements.length === 0) {
     createGrid(utDensityInput.value);
   } else removeGrid();
+
+  handleResizeHandles();
 };
 
 const handlBannerElementRemove = (element) => {

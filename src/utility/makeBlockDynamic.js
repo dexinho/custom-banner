@@ -70,7 +70,7 @@ export const makeBlockDynamic = (block) => {
 
   const createResizeHandle = (className) => {
     const handle = document.createElement("div");
-    handle.className = `resize-handle resize-handle-toggle ${className}`;
+    handle.className = `resize-handle-toggle ${className}`;
     handle.addEventListener("mousedown", (e) => startResizing(e, handle));
     return handle;
   };
