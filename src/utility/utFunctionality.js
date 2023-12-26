@@ -75,10 +75,10 @@ const handleUtDensity = () => {
 const handleInsert = () => {
   utInsertBtn.addEventListener("click", () => {
     const selectedOption = utOptionTool.firstElementChild;
+    const selectedElements = document.querySelectorAll(".selected");
+    const elements = [...selectedElements];
 
     if (selectedOption.nodeName === "INPUT") {
-      const selectedElements = document.querySelectorAll(".selected");
-      const elements = [...selectedElements];
 
       if (elements.length === 0) {
         alert("Please select the range before insertion!");
@@ -97,6 +97,8 @@ const handleInsert = () => {
       blockHolder.append(img);
 
       makeBlockDynamic(blockHolder);
+    } else if (selectedOption.nodeName === 'TEXTAREA') {
+
     }
   });
 };
