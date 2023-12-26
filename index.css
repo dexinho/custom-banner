@@ -130,9 +130,14 @@ body {
   font-size: 1rem;
   height: 200px;
   width: 200px;
+  gap: 1rem;
 }
 
 #ut-density-btn {
+  margin: 0;
+}
+
+#ut-density-input {
   margin-top: 1rem;
 }
 
