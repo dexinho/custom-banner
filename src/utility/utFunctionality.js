@@ -74,32 +74,30 @@ const handleUtDensity = () => {
 
 const handleInsert = () => {
   utInsertBtn.addEventListener("click", () => {
-    const selectedOption = utOptionTool.firstElementChild;
     const selectedElements = document.querySelectorAll(".selected");
     const elements = [...selectedElements];
 
+    if (elements.length === 0) {
+      alert("Please select the range before insertion!");
+      return;
+    }
+
+    const selectedOption = utOptionTool.firstElementChild;
+    const blockHolder = createHolder({
+      startX: elements.at(0).getBoundingClientRect().left,
+      endX: elements.at(-1).getBoundingClientRect().right,
+    });
+
     if (selectedOption.nodeName === "INPUT") {
-
-      if (elements.length === 0) {
-        alert("Please select the range before insertion!");
-        return;
-      }
-
       const img = document.createElement("img");
       img.src = selectedOption.value;
       img.className = "banner-pic c-grab";
 
-      const blockHolder = createHolder({
-        startX: elements.at(0).getBoundingClientRect().left,
-        endX: elements.at(-1).getBoundingClientRect().right,
-      });
-
       blockHolder.append(img);
-
-      makeBlockDynamic(blockHolder);
-    } else if (selectedOption.nodeName === 'TEXTAREA') {
-
+    } else if (selectedOption.nodeName === "TEXTAREA") {
+      
     }
+    makeBlockDynamic(blockHolder);
   });
 };
 
