@@ -61,6 +61,7 @@ const handleUtSelection = () => {
     } else if (utSelect.value === "html") {
       utOptionTitle.textContent = "HTML:";
       const textarea = document.createElement("textarea");
+      textarea.id = "html-input-textarea";
       utOptionTool.append(textarea);
     }
   });
@@ -95,8 +96,13 @@ const handleInsert = () => {
 
       blockHolder.append(img);
     } else if (selectedOption.nodeName === "TEXTAREA") {
-      
+      const htmlTextarea = document.querySelector("#html-input-textarea");
+      const htmlBlock = document.createElement("div");
+      htmlBlock.innerHTML = htmlTextarea.value;
+
+      blockHolder.append(htmlBlock);
     }
+
     makeBlockDynamic(blockHolder);
   });
 };
